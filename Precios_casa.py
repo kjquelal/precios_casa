@@ -1,4 +1,3 @@
-#%pip install streamlit
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -93,12 +92,17 @@ st.write(f"🔹 R² Score - Test: {test_r2:.2f}")
 st.write("### Datos de Entrenamiento 📊")
 st.write(generate_data().head())
 
-
+# 📌 Gráfica de dispersión de predicciones
 fig, ax = plt.subplots()
 ax.scatter(y_test, y_test_pred, alpha=0.5, label="Predicción vs Realidad")
-ax.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], "r--", lw=2, label="Línea ideal")
+ax.plot([y.min(), y.max()], [y.min(), y.max()], "r--", lw=2, label="Línea ideal")
 ax.set_xlabel("Precio Real")
 ax.set_ylabel("Precio Predicho")
+ax.legend()
+st.pyplot(fig)
+
+st.write("🚀 Desarrollado con Python y potenciado por Streamlit")
+
 ax.legend()
 st.pyplot(fig)
 
